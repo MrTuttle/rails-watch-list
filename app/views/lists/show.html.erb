@@ -1,0 +1,13 @@
+<h1>Ma liste de films "view show"</h1>
+<p><%= link_to "ajoute un film", new_list_bookmark_path(params[:id]) %> </p>
+
+
+
+<% @list.bookmarks.each do | bookmark| %>
+    <%= bookmark.movie.title %>
+    <%= bookmark.movie.overview %>
+    <%= bookmark.movie.rating %>
+    <%= image_tag bookmark.movie.poster_url %>
+    <%= link_to 'delete', bookmark_path(bookmark) , data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+
+<% end %>
